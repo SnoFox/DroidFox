@@ -1,7 +1,5 @@
 package net.snofox.droidfox;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -49,15 +47,8 @@ public class CommandHandler {
 		return true;
 	}
 
-	public boolean handle(User user, String target, String message) {
+	public boolean handle(User user, String target, String cmd, List<String> args) {
 		boolean foundCommand = false;
-		List<String> args = Arrays.asList(message.split(" "));
-		final String cmd = ((String) args.get(0)).substring(1);
-		if (args.size() > 1) {
-			args = args.subList(1, args.size());
-		} else {
-			args = new ArrayList<String>();
-		}
 
 		for (final Command command : this.activeCommands) {
 			if (command.getName().equalsIgnoreCase(cmd)) {
